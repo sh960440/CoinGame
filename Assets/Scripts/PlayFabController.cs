@@ -37,7 +37,7 @@ public class PlayFabController : MonoBehaviour
         // Note: Setting title Id here can be skipped if you have set the value in Editor Extensions already.
         if (string.IsNullOrEmpty(PlayFabSettings.TitleId))
         {
-            PlayFabSettings.TitleId = "2BAF4"; // Please change this value to your own titleId from PlayFab Game Manager
+            PlayFabSettings.TitleId = "2BAF4"; // titleId from PlayFab Game Manager
         }
     }
 
@@ -79,7 +79,7 @@ public class PlayFabController : MonoBehaviour
             case PlayFabErrorCode.AccountNotFound:
                 message.text = "User Not Found";
                 break;
-            case PlayFabErrorCode.InvalidParams: // Email格式不符、密碼長度過短等
+            case PlayFabErrorCode.InvalidParams:
                 message.text = "Invalid Input";
                 break;
             case PlayFabErrorCode.EmailAddressNotAvailable:
@@ -199,7 +199,7 @@ public class PlayFabController : MonoBehaviour
     #region Leaderboard
     public void GetLeaderboard()
     {
-        var requestLeaderboard = new GetLeaderboardRequest { StartPosition = 0, StatisticName = "PlayerPops", MaxResultsCount = 20 }; // 取得前20名的成績
+        var requestLeaderboard = new GetLeaderboardRequest { StartPosition = 0, StatisticName = "PlayerPops", MaxResultsCount = 20 }; // Get top 20
         PlayFabClientAPI.GetLeaderboard(requestLeaderboard, OnGetLeaderboard, OnErrorLeaderboard);
     }
 
