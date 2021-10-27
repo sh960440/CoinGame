@@ -17,6 +17,12 @@ public class GameController : MonoBehaviour
         PlayerInfo.instance.IncreasePops();
         PlayFabController.instance.SetStats();
         coinAnimator.SetTrigger("PlayAnimation");
+        GameObject popText = ObjectPool.instance.GetPooledObject();
+        if (popText != null) 
+        {  
+            popText.SetActive(true);
+            StartCoroutine(popText.GetComponent<FloatingText>().Pop());
+        }
         audioSource.Play();
     }
 }
